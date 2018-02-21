@@ -49,12 +49,13 @@ namespace PassGen
     {
         static void Main(string[] args)
         {
-            int length;
-            Console.Write("Enter the password length: ");
-            length = Convert.ToInt32(Console.ReadLine());
-
+            
             try
             {
+                int length;
+                Console.Write("Enter the password length: ");
+                length = Convert.ToInt32(Console.ReadLine());
+
                 Password p = new Password(length);
                 Console.WriteLine("Generated password: {0}", p.password());
             }
@@ -63,6 +64,12 @@ namespace PassGen
                 Console.WriteLine("Exception during execution: ");
                 Console.WriteLine(ex.Message);
             }
+            catch(FormatException fe)
+            {
+                Console.WriteLine("Exception during execution: ");
+                Console.WriteLine(fe.Message);
+            }
+            
             Console.ReadLine();
         }
     }
